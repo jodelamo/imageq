@@ -1,12 +1,15 @@
 {
   "name": "imageq",
   "version": "0.0.1",
-  "description": "",
+  "description": "Simple image comparison.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/karma start"
   },
-  "author": "",
+  "author": [
+    "Joacim Löwgren <joacim.lowgren@gmail.com>",
+    "Oskar Wickström <oskar.wickstrom@gmail.com>"
+  ],
   "license": "ISC",
   "devDependencies": {
     "browserify": "^6.3.3",

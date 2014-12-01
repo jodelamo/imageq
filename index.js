@@ -1,6 +1,6 @@
 'use strict';
 
-function getPixelData(image) {
+function getImageData(image) {
   return new Promise(function (resolve, reject) {
     var img = window.document.createElement('img');
     var canvas = window.document.createElement('canvas');
@@ -17,23 +17,21 @@ function getPixelData(image) {
   });
 }
 
-module.exports = function (image1, image2) {
+module.exports = function (path1, path2) {
+  return Promise.all([getImageData(path1), getImageData(path2)]).then(function (data) {
+    var image1 = data[0];
+    var image2 = data[1];
 
-  return Promise.all([getPixelData(image1), getPixelData(image2)]).then(function (data) {
-    var data1 = data[0];
-    var data2 = data[1];
-
-    if (data1.width !== data2.width || data1.height !== data2.height) {
+    if (image1.width !== image2.width || image1.height !== image2.height) {
       return false;
     }
 
-    for (var i = 0; i < data1.width * data1.height; ++i) {
-      if (data1.data[i] !== data2.data[i]) {
+    for (var i = 0; i < image1.width * image1.height; ++i) {
+      if (image1.data[i] !== image2.data[i]) {
         return false;
       }
     }
 
     return true;
   });
-
 };
