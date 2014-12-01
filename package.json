@@ -1,0 +1,21 @@
+{
+  "name": "imageq",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^6.3.3",
+    "chai": "^1.10.0",
+    "karma": "^0.12.28",
+    "karma-browserifast": "^0.7.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-mocha": "^0.1.9",
+    "mocha": "^2.0.1"
+  }
+}
