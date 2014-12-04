@@ -11,7 +11,7 @@ npm install imageq
 ## Usage
 
 ```javascript
-var  imageq = require('imageq');
+var imageq = require('imageq');
 
 var image1 = 'image1.png';
 var image2 = 'image2.png';
