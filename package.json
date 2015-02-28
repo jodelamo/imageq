@@ -10,6 +10,12 @@
     "Joacim Löwgren <joacim.lowgren@gmail.com>",
     "Oskar Wickström <oskar.wickstrom@gmail.com>"
   ],
+  "keywords": [
+    "image",
+    "comparison",
+    "duplicates",
+    "canvas"
+  ],
   "license": "ISC",
   "devDependencies": {
     "browserify": "^6.3.3",
