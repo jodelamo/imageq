@@ -7,10 +7,12 @@ function getImageData(image) {
     var context = canvas.getContext('2d');
 
     img.src = image;
+
     img.onload = function () {
       context.drawImage(img, 0, 0);
       resolve(context.getImageData(0, 0, img.width, img.height));
     };
+
     img.onerror = function (error) {
       reject(error);
     };
@@ -35,3 +37,4 @@ module.exports = function (path1, path2) {
     return true;
   });
 };
+
