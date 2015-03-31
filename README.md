@@ -1,11 +1,11 @@
 # ImagEQ
 
-Extremely simple image comparison.
+Simple image comparison.
 
 ## Install
 
-```bash
-npm install imageq
+```zsh
+npm install imageq --save
 ```
 
 ## Usage
