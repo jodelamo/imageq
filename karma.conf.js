@@ -1,43 +1,34 @@
 'use strict';
 
-module.exports = function (config) {
+export default function (config) {
   config.set({
-
-    basePath: '',
-
-    frameworks: ['mocha', 'browserify', 'chai'],
-
-    files: [
-      { pattern: '*.js', watched: true, included: false, served: true }
-    ],
-
-    preprocessors: {
-      '/**/*.browserify': ['browserify']
-    },
-
-    browserify: {
-      files: [
-        '*-test.js'
-      ]
-    },
-
-    reporters: ['progress'],
-
-    port: 9876,
-
-    proxies: {
-      '/images/1.jpg': 'http://www.phootoscelebrities.com/wp-content/uploads/2014/07/arnold-schwarzenegger-images.jpg',
-      '/images/2.jpg': 'http://www.bodybuilding.com/fun/images/2014/arnold-blueprint_day18_graphics-1.jpg'
-    },
-
-    colors: true,
-
-    logLevel: config.LOG_INFO,
-
-    autoWatch: true,
-
     browsers: ['Chrome'],
-
-    singleRun: true
+    singleRun: true,
+    frameworks: ['mocha', 'chai'],
+    files: [
+      'test/**/*.spec.js',
+      { pattern: 'test/images/*.png', served: true }
+    ],
+    preprocessors: {
+      'test/**/*.spec.js': ['webpack']
+    },
+    reporters: ['mocha'],
+    webpack: {
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel-loader'
+          }
+        ]
+      }
+    },
+    webpackMiddleware: {
+      noInfo: true
+    },
+    proxies: {
+      '/1.png': '/base/test/images/1.png',
+      '/2.png': '/base/test/images/2.png'
+    }
   });
-};
+}
