@@ -8,6 +8,8 @@ export default {
     './index'
   ],
   output: {
+    library: 'imageq',
+    libraryTarget: 'umd',
     path: path.join(__dirname, 'build'),
     filename: 'imageq.js'
   },
