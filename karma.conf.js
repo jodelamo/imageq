@@ -1,6 +1,6 @@
 'use strict';
 
-export default function (config) {
+module.exports = function (config) {
   config.set({
     browsers: ['Chrome'],
     singleRun: true,
