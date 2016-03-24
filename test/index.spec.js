@@ -7,7 +7,7 @@ describe('imageq', () => {
   it('should return true for identical images', () => {
     const image = '/1.png';
 
-    return imageq(image, image).then(data => {
+    imageq(image, image).then(data => {
       expect(data).to.be.true;
     });
   });
@@ -16,7 +16,7 @@ describe('imageq', () => {
     const image1 = '/1.png';
     const image2 = '/2.png';
 
-    return imageq(image1, image2).then(data => {
+    imageq(image1, image2).then(data => {
       expect(data).to.be.false;
     });
   });
