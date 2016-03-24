@@ -1,17 +1,9 @@
 'use strict';
 
-import path from 'path';
-import webpack from 'webpack';
-
-export default {
-  entry: [
-    './index'
-  ],
+module.exports = {
   output: {
     library: 'imageq',
-    libraryTarget: 'umd',
-    path: path.join(__dirname, 'build'),
-    filename: 'imageq.js'
+    libraryTarget: 'umd'
   },
   module: {
     preLoaders: [
@@ -20,9 +12,5 @@ export default {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+  }
 };

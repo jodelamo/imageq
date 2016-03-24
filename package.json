@@ -2,11 +2,17 @@
   "name": "imageq",
   "version": "0.2.0",
   "description": "Simple image comparison.",
-  "main": "build/index.js",
+  "main": "lib",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "build": "webpack index.js lib/imageq.js",
+    "lint": "eslint index.js",
+    "test": "karma start",
+    "pretest": "npm run lint",
     "preversion": "npm test",
-    "build": "babel-node -- ./node_modules/.bin/webpack -p",
-    "test": "babel-node -- ./node_modules/.bin/karma start"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
