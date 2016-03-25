@@ -1,9 +1,6 @@
-'use strict';
-
 module.exports = function (config) {
   config.set({
     browsers: ['Chrome'],
-    singleRun: true,
     frameworks: ['mocha', 'chai'],
     files: [
       'test/**/*.spec.js',
@@ -28,7 +25,8 @@ module.exports = function (config) {
     },
     proxies: {
       '/1.png': '/base/test/images/1.png',
-      '/2.png': '/base/test/images/2.png'
+      '/2.png': '/base/test/images/2.png',
+      '/3.png': '/base/test/images/3.png'
     }
   });
 }

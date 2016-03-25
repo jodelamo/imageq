@@ -1,6 +1,4 @@
-'use strict';
-
-function getImageData(image) {
+const getImageData = image => {
   return new Promise((resolve, reject) => {
     const img = window.document.createElement('img');
     const canvas = window.document.createElement('canvas');
@@ -19,27 +17,38 @@ function getImageData(image) {
   });
 }
 
-export default function (path1, path2) {
+const hasEqualSize = (image1, image2) => {
+  return image1.width === image2.width || image1.height === image2.height;
+}
+
+const hasEqualData = (image1, image2) => {
+  let equal = true;
+  let i;
+
+  for (i = 0; i < (image1.width * image1.height); ++i) {
+    if (image1.data[i] !== image2.data[i]) {
+      equal = false;
+      break;
+    }
+  }
+
+  return equal;
+}
+
+const imageq = (path1, path2) => {
   return Promise.all([
-      getImageData(path1),
-      getImageData(path2)
+    getImageData(path1),
+    getImageData(path2)
   ]).then(data => {
     const image1 = data[0];
     const image2 = data[1];
-    let i;
 
-    // It can't possibly be the same image if dimensions do not match.
-    if (image1.width !== image2.width || image1.height !== image2.height) {
+    if (!hasEqualSize(image1, image2) || !hasEqualData(image1, image2)) {
       return false;
-    }
-
-    // Run a byte to byte comparison.
-    for (i = 0; i < image1.width * image1.height; ++i) {
-      if (image1.data[i] !== image2.data[i]) {
-        return false;
-      }
     }
 
     return true;
   });
 }
+
+export default imageq;
