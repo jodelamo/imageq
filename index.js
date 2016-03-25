@@ -35,19 +35,32 @@ const hasEqualData = (image1, image2) => {
   return equal;
 }
 
-const imageq = (path1, path2) => {
-  return Promise.all([
-    getImageData(path1),
-    getImageData(path2)
-  ]).then(data => {
-    const image1 = data[0];
-    const image2 = data[1];
+const isArray = param => {
+  return Object.prototype.toString.call(param) === '[object Array]';
+}
 
-    if (!hasEqualSize(image1, image2) || !hasEqualData(image1, image2)) {
-      return false;
+const imageq = imagePaths => {
+  if (!isArray(imagePaths)) {
+    throw new Error('imageq expects an array of image paths');
+  }
+
+  const images = imagePaths.map(getImageData);
+
+  return Promise.all(images).then(imageData => {
+    let equal = true;
+
+    for (let i = 0; i < imageData.length; ++i) {
+      let currentImage = imageData[i];
+
+      for (let j = 0; j < imageData.length; ++j) {
+        if (!hasEqualSize(currentImage, imageData[j]) || !hasEqualData(currentImage, imageData[j])) {
+          equal = false;
+          break;
+        }
+      }
     }
 
-    return true;
+    return equal;
   });
 }
 
