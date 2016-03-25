@@ -17,12 +17,15 @@ npm install --save imageq
 ## Usage
 
 ```javascript
-const imageq = require('imageq');
+import imageq from 'imageq';
 
-const image1 = 'image1.png';
-const image2 = 'image2.png';
+const images = [
+  '/path/to/images/1.png',
+  '/path/to/images/2.png',
+  '/path/to/images/3.png'
+];
 
-imageq(image1, image2).then(function (identical) {
+imageq(images).then(function (identical) {
   if (identical) {
     // ...
   }
