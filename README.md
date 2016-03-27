@@ -1,4 +1,4 @@
-# ImagEQ
+# imageq
 
 Simple image comparison by temporarily loading images on `canvas` elements and
 doing a size and byte to byte comparison.
