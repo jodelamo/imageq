@@ -9,8 +9,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "ava test.js",
-    "preversion": "npm test"
+    "test": "ava test.js"
   },
   "repository": {
     "type": "git",
