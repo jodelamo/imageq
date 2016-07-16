@@ -41,7 +41,7 @@ const isArray = param => {
 
 const imageq = imagePaths => {
   if (!isArray(imagePaths)) {
-    throw new Error('imageq expects an array of image paths');
+    throw new Error('Expected an array of paths to images');
   }
 
   const images = imagePaths.map(getImageData);
@@ -64,4 +64,4 @@ const imageq = imagePaths => {
   });
 }
 
-export default imageq;
+module.exports = imageq;
