@@ -15,9 +15,7 @@ const getImageData = image => {
       resolve(context.getImageData(0, 0, img.width, img.height));
     };
 
-    img.onerror = error => {
-      reject(error);
-    };
+    img.onerror = error => reject(error);
   });
 }
 
